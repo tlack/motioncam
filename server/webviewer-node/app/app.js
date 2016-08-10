@@ -36,9 +36,8 @@ postsIndex = function(req, res) {
 	h+="</posts><div id=stats>"+dirs.length+"</stats></body>";
 	res.send(h);
 };
-// configure express
+// configure express crust
 var app = express();
-console.log(app);
 app.configure(function(){
   app.set('port', process.env.PORT || port);
   app.use(express.favicon());
@@ -53,6 +52,6 @@ app.configure(function(){
 // serve
 app.get('/', postsIndex);
 http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
+  console.log("web server port = " + app.get('port'));
 });
 
