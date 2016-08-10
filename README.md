@@ -57,6 +57,9 @@ OUT | D0 |
 Software
 --------
 
+Warning: this thing posts to my public server by default; be sure to edit all
+the host details in both configuration sections.
+
 `esp8266/` is the software to install on the ESP8266/camera device. The device
 can be configured to join an existing wifi network or to start its own. Either
 way it presents a streaming view of the camera frames on its own IP. See the
