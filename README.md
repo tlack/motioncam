@@ -75,11 +75,12 @@ should be updated to HTTP at some point, but I had issues with the client-side
 Arduino HTTP libraries when doing post with image data. Eventually it should
 accept data samples other than images, allow senders to indicate their node id,
 and restrict upload access to configured users/keys, but right now it doesn't
-do any of that.
+do any of that. Run with `sh run.sh`.
 
 `server/webviewer-node/` allows you to review stored frames. It's a crude Node.js
 web server using Express and the static file stuff. It uses HTTP AUTH and the
-list of users can be configured in users.txt.  The password is always ignored.
+list of users can be configured in users.txt. The password is always ignored.
+Don't forget to `npm install` and then `sh run.sh`.
 
 Status
 ------
