@@ -2,9 +2,9 @@ motioncam
 =========
 
 A simple, adaptable web-connected camera, using the ESP8266, Arducam, and
-optionally some server-side bits for archiving.
+optionally a motion sensor and some server-side bits for archiving.
 
-Perhaps a good base for other, more elaborate projects.
+Perhaps a good base for more elaborate projects.
 
 Overview
 --------
@@ -64,7 +64,7 @@ the host details in both configuration sections.
 can be configured to join an existing wifi network or to start its own. Either
 way it presents a streaming view of the camera frames on its own IP. See the
 configuration section at top of the `motioncam.ino` file to configure its
-behavior.
+behavior. This is mostly garbage that's been cut-n-pasted from here and there.
 
 `server/` contains the optional server-side part. It will record a burst of frames
 when motion is detected by the device. See CONFIG.sh to customize its behavior.
