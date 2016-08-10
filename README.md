@@ -12,7 +12,7 @@ Overview
 This collection of software lets you set up ad-hoc camera thingies.
 
 It presents a web-based view of your Arducam-based camera and optionally
-uploads frames when it detects motion.
+uploads camera frames to an Internet server when it detects motion.
 
 Hardware
 --------
@@ -29,7 +29,7 @@ Optional: HC-SR501 motion sensor
 Wiring
 ------
 
-For Arducam, this wiring seemed to work for me. You may have a different
+For Arducam this wiring seemed to work for me. You may have a different
 experience.
 
 Arducam Pin | ESP8266 pin | Notes
@@ -53,7 +53,6 @@ VCC | 5V | Apparently some are 3V instead of 5V
 GND | GND | 
 OUT | D0 |
 
-
 Software
 --------
 
@@ -69,23 +68,30 @@ behavior. This is mostly garbage that's been cut-n-pasted from here and there.
 `server/` contains the optional server-side part. It will record a burst of frames
 when motion is detected by the device. See CONFIG.sh to customize its behavior.
 
-`server/postserver-bash/` receives frames from camera device(s) and stores them. It's a
-Bash one-liner using `netcat` which must be installed as `nc`, basically.  This
-should be updated to HTTP at some point, but I had issues with the client-side
-Arduino HTTP libraries when doing post with image data. Eventually it should
-accept data samples other than images, allow senders to indicate their node id,
-and restrict upload access to configured users/keys, but right now it doesn't
-do any of that. Run with `sh run.sh`.
+`server/postserver-bash/` receives frames from camera device(s) and stores
+them. It's a Bash one-liner basically. Uses `netcat` which must be installed as
+`nc`. 
+
+This should be updated to HTTP at some point, but I had encoding issues with the
+client-side Arduino HTTP libraries when doing POST with image data, and I'm pretty
+sure TCP/IP is 8bit clean anyway.  
+
+Eventually it should accept data other than images (such as sensor
+measurements), allow senders to indicate their node id, and restrict upload
+access to configured users/keys, but right now it doesn't do any of that.
+Assumes you have ImageMagick installed on the server as `convert` but you could
+easily remove that. Run with `sh run.sh`.
 
 `server/webviewer-node/` allows you to review stored frames. It's a crude Node.js
 web server using Express and the static file stuff. It uses HTTP AUTH and the
 list of users can be configured in users.txt. The password is always ignored.
-Don't forget to `npm install` and then `sh run.sh`.
+Don't forget to `npm install` and then `sh run.sh`. Ideally, this would share some
+sort of visual language with the Esp8266-side server. 
 
 Status
 ------
 
-Prototype
+Prototype as usual..
 
 Credits
 -------
