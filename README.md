@@ -69,7 +69,7 @@ behavior.
 `server/` contains the optional server-side part. It will record a burst of frames
 when motion is detected by the device. See CONFIG.sh to customize its behavior.
 
-`server/post/` receives frames from camera device(s) and stores them. It's a
+`server/postserver-bash/` receives frames from camera device(s) and stores them. It's a
 Bash one-liner using `netcat` which must be installed as `nc`, basically.  This
 should be updated to HTTP at some point, but I had issues with the client-side
 Arduino HTTP libraries when doing post with image data. Eventually it should
@@ -77,7 +77,7 @@ accept data samples other than images, allow senders to indicate their node id,
 and restrict upload access to configured users/keys, but right now it doesn't
 do any of that.
 
-`server/viewer-node/` allows you to review stored frames. It's a crude Node.js
+`server/webviewer-node/` allows you to review stored frames. It's a crude Node.js
 web server using Express and the static file stuff. It uses HTTP AUTH and the
 list of users can be configured in users.txt.  The password is always ignored.
 
